@@ -31,7 +31,7 @@ app.get('/api/v1/:info',async(req, res) => {
     const apiKey = process.env.API_KEY
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const prompt = info ;
+    const prompt = `Act as a dictionary and give sort information about ${info}` ;
     const result = await model.generateContent(prompt);
     res.send(result.response.text());
 })
